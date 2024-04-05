@@ -8,12 +8,12 @@ Dependencias necesarias
 
 - `JDK(Java Development Kit)`: Descargar e instalar el JDK mas reciente.
 - `Python`: Descargar e instalar la version mas reciente de Python.
-- `Descargar Java`: Descargar e instalar directamente desde https://www.java.com.
+- `Descargar Java`: Descargar e instalar directamnete desde https://www.java.com.
 - `Instalar las librerias necesarias de python`: Instalar atra vez de pip pandas, tensorflow, scikit-learn y pillow.
 
 ## Guia de instalacion para componentes de aceleramiento por hardware
 
-Para tarjetas NVIDIA:
+Para tarjeta NVIDIA:
 
 - Descarga e instala los controladores específicos para tu GPU NVIDIA.
 - Descarga la versión compatible con tu GPU del CUDA Toolkit.
