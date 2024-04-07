@@ -5,7 +5,6 @@ from tensorflow import keras
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping
-import EfficientNet.effnetv2
 
 ruta_archivo = os.path.realpath(__file__).replace("\\Recursos_ingenieria\\Crear_modelo.py", "")
 ruta_ultimo_modelo = ruta_archivo + "\\Otros_recursos\\Ultimo_modelo.csv"
