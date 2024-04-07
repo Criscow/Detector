@@ -6,13 +6,17 @@ package Ventanas.Detectar;
  */
 public class Informacion_de_un_modelo extends javax.swing.JFrame {
 
-    public Informacion_de_un_modelo() {
-        initComponents();
+    public Informacion_de_un_modelo(String[] datos) {
+        iniciarComponentes();
+        this.Titulo_Nombre_modelo.setText("Nombre del modelo: " + datos[0].replace("_", " "));
+        this.Titulo_Nombre_autor.setText("Autor: " + datos[1]);
+        this.Titulo_Fecha_creacion.setText("Fecha de creacion: " + datos[2] + "-" + datos[3] + "-" + datos[4]);
+        this.Titulo_Resolucion.setText("Resolucion de entrada-imagen recomenda: " + datos[5]);
+        this.Titulo_Tamaño.setText("Tamaño: " + datos[6]);
+        this.Informacion.setText(datos[9]);
     }
 
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
+    private void iniciarComponentes() {
 
         Fondo = new javax.swing.JPanel();
         Boton_salir = new javax.swing.JLabel();
@@ -24,8 +28,7 @@ public class Informacion_de_un_modelo extends javax.swing.JFrame {
         Titulo_Resolucion = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Informacion = new javax.swing.JTextArea();
-        Titulo_Precisión = new javax.swing.JLabel();
-        
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("Informacion de un modelo");
         setLocationByPlatform(true);
@@ -52,36 +55,42 @@ public class Informacion_de_un_modelo extends javax.swing.JFrame {
         Titulo_Nombre_modelo.setBackground(new java.awt.Color(255, 255, 255));
         Titulo_Nombre_modelo.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Titulo_Nombre_modelo.setForeground(new java.awt.Color(0, 0, 0));
+        Titulo_Nombre_modelo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Titulo_Nombre_modelo.setText("Nombre del modelo: ");
         Fondo.add(Titulo_Nombre_modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, -1));
 
         Titulo_Nombre_autor.setBackground(new java.awt.Color(255, 255, 255));
         Titulo_Nombre_autor.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Titulo_Nombre_autor.setForeground(new java.awt.Color(0, 0, 0));
+        Titulo_Nombre_autor.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Titulo_Nombre_autor.setText("Autor:");
         Fondo.add(Titulo_Nombre_autor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
         Titulo_Fecha_creacion.setBackground(new java.awt.Color(255, 255, 255));
         Titulo_Fecha_creacion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Titulo_Fecha_creacion.setForeground(new java.awt.Color(0, 0, 0));
+        Titulo_Fecha_creacion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Titulo_Fecha_creacion.setText("Fecha de creacion:");
         Fondo.add(Titulo_Fecha_creacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         Titulo_Informacion_adicional.setBackground(new java.awt.Color(255, 255, 255));
         Titulo_Informacion_adicional.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Titulo_Informacion_adicional.setForeground(new java.awt.Color(0, 0, 0));
+        Titulo_Informacion_adicional.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Titulo_Informacion_adicional.setText("Informacion adicional");
-        Fondo.add(Titulo_Informacion_adicional, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
+        Fondo.add(Titulo_Informacion_adicional, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
         Titulo_Tamaño.setBackground(new java.awt.Color(255, 255, 255));
         Titulo_Tamaño.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Titulo_Tamaño.setForeground(new java.awt.Color(0, 0, 0));
+        Titulo_Tamaño.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Titulo_Tamaño.setText("Tamaño: ");
         Fondo.add(Titulo_Tamaño, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, -1, -1));
 
         Titulo_Resolucion.setBackground(new java.awt.Color(255, 255, 255));
         Titulo_Resolucion.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
         Titulo_Resolucion.setForeground(new java.awt.Color(0, 0, 0));
+        Titulo_Resolucion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Titulo_Resolucion.setText("Resolucion de entrada-imagen recomenda:");
         Fondo.add(Titulo_Resolucion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
 
@@ -93,18 +102,11 @@ public class Informacion_de_un_modelo extends javax.swing.JFrame {
         Informacion.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         Informacion.setForeground(new java.awt.Color(0, 0, 0));
         Informacion.setLineWrap(true);
-        Informacion.setWrapStyleWord(true);
         Informacion.setRows(5);
         Informacion.setBorder(null);
         jScrollPane1.setViewportView(Informacion);
 
-        Fondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, 690, 160));
-
-        Titulo_Precisión.setBackground(new java.awt.Color(255, 255, 255));
-        Titulo_Precisión.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
-        Titulo_Precisión.setForeground(new java.awt.Color(0, 0, 0));
-        Titulo_Precisión.setText("Precisión:");
-        Fondo.add(Titulo_Precisión, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
+        Fondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 690, 190));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,7 +121,7 @@ public class Informacion_de_un_modelo extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>                        
+    }
 
     private void Boton_salirMouseClicked(java.awt.event.MouseEvent evt) {                                         
         this.setVisible(false); // Oculta la ventana como si se hubiese "Cerrado"
@@ -133,7 +135,6 @@ public class Informacion_de_un_modelo extends javax.swing.JFrame {
     private javax.swing.JLabel Titulo_Informacion_adicional;
     private javax.swing.JLabel Titulo_Nombre_autor;
     private javax.swing.JLabel Titulo_Nombre_modelo;
-    private javax.swing.JLabel Titulo_Precisión;
     private javax.swing.JLabel Titulo_Resolucion;
     private javax.swing.JLabel Titulo_Tamaño;
     private javax.swing.JScrollPane jScrollPane1;

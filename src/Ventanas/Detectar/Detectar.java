@@ -2,11 +2,13 @@ package Ventanas.Detectar;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.FileReader;
 import java.util.List;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Ventanas.Otros.Alerta;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,54 +21,11 @@ import java.util.ArrayList;
 public class Detectar extends javax.swing.JFrame {
 
     public Detectar() {
-        initComponents();
+        iniciarComponentes();
+        listarModelos();
     }
 
-    /**
-     * Método para validar los campos de entrada.
-     *
-     * @return true si todos los campos son válidos, false en caso contrario.
-     */
-    private boolean validarCampos() {
-        // Verificar que los campos de texto no estén vacíos.
-        // Si alguno de los campos está vacío, se retorna false inmediatamente.
-        if (this.Campo_nombres.getText().toString().equals("")
-                || this.Campo_apellidos.getText().toString().equals("")
-                || this.Campo_dia.getText().toString().equals("")
-                || this.Campo_mes.getText().toString().equals("")
-                || this.Campo_año.getText().toString().equals("")
-                || this.Campo_telefono.getText().toString().equals("")) {
-            return false;
-        }
-
-        // Verificar que los campos numéricos tengan entradas numéricas.
-        // Se intenta convertir los campos numéricos a enteros.
-        // Si alguno de los campos no es un número válido o no cumple con las restricciones especificadas,
-        // se retorna false.
-        try {
-            int dia = Integer.parseInt(this.Campo_dia.getText().toString());
-            int mes = Integer.parseInt(this.Campo_mes.getText().toString());
-            int año = Integer.parseInt(this.Campo_año.getText().toString());
-
-            if (dia < 1 || dia > 31 || mes < 1 || mes > 12 || año < 2024) {
-                return false;
-            }
-        } catch (NumberFormatException e) {
-            // Si se lanza una excepción NumberFormatException, significa que uno de los campos no es un número válido.
-            return false;
-        }
-
-        // Si todas las verificaciones pasan, se retorna true.
-        return true;
-    }
-    
-    private void limpiarCampos(){
-        
-    }
-
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
+    private void iniciarComponentes() {
 
         Fondo = new javax.swing.JPanel();
         Modelos_ayuda = new javax.swing.JLabel();
@@ -109,7 +68,10 @@ public class Detectar extends javax.swing.JFrame {
         Campo_año.setBackground(new java.awt.Color(255, 255, 255));
         Campo_año.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         Campo_año.setForeground(new java.awt.Color(51, 51, 51));
-        Campo_año.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Año", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        Campo_año.setBorder(javax.swing.BorderFactory.createTitledBorder(
+                new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Año",
+                javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
+                new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         Campo_año.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Campo_añoActionPerformed(evt);
@@ -120,7 +82,10 @@ public class Detectar extends javax.swing.JFrame {
         Campo_nombres.setBackground(new java.awt.Color(255, 255, 255));
         Campo_nombres.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         Campo_nombres.setForeground(new java.awt.Color(51, 51, 51));
-        Campo_nombres.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Nombre(s)", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        Campo_nombres.setBorder(javax.swing.BorderFactory.createTitledBorder(
+                new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Nombre(s)",
+                javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
+                new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         Campo_nombres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Campo_nombresActionPerformed(evt);
@@ -131,7 +96,10 @@ public class Detectar extends javax.swing.JFrame {
         Campo_telefono.setBackground(new java.awt.Color(255, 255, 255));
         Campo_telefono.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         Campo_telefono.setForeground(new java.awt.Color(51, 51, 51));
-        Campo_telefono.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Numero de telefono", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        Campo_telefono.setBorder(javax.swing.BorderFactory.createTitledBorder(
+                new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Numero de telefono",
+                javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
+                new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         Campo_telefono.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Campo_telefonoActionPerformed(evt);
@@ -142,7 +110,10 @@ public class Detectar extends javax.swing.JFrame {
         Campo_dia.setBackground(new java.awt.Color(255, 255, 255));
         Campo_dia.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         Campo_dia.setForeground(new java.awt.Color(51, 51, 51));
-        Campo_dia.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Dia", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        Campo_dia.setBorder(javax.swing.BorderFactory.createTitledBorder(
+                new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Dia",
+                javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
+                new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         Campo_dia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Campo_diaActionPerformed(evt);
@@ -153,7 +124,10 @@ public class Detectar extends javax.swing.JFrame {
         Campo_mes.setBackground(new java.awt.Color(255, 255, 255));
         Campo_mes.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         Campo_mes.setForeground(new java.awt.Color(51, 51, 51));
-        Campo_mes.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Mes", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        Campo_mes.setBorder(javax.swing.BorderFactory.createTitledBorder(
+                new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Mes",
+                javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
+                new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         Campo_mes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Campo_mesActionPerformed(evt);
@@ -182,7 +156,10 @@ public class Detectar extends javax.swing.JFrame {
         Campo_apellidos.setBackground(new java.awt.Color(255, 255, 255));
         Campo_apellidos.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         Campo_apellidos.setForeground(new java.awt.Color(51, 51, 51));
-        Campo_apellidos.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Apellido(s)", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        Campo_apellidos.setBorder(javax.swing.BorderFactory.createTitledBorder(
+                new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Apellido(s)",
+                javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
+                new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         Campo_apellidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Campo_apellidosActionPerformed(evt);
@@ -198,7 +175,10 @@ public class Detectar extends javax.swing.JFrame {
         Campo_informacion_adicional.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         Campo_informacion_adicional.setForeground(new java.awt.Color(51, 51, 51));
         Campo_informacion_adicional.setRows(5);
-        Campo_informacion_adicional.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Informacion adicional", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
+        Campo_informacion_adicional.setBorder(javax.swing.BorderFactory.createTitledBorder(
+                new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Informacion adicional",
+                javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
+                new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
         Campo_informacion_adicional.setLineWrap(true);
         Campo_informacion_adicional.setWrapStyleWord(true);
         jScrollPane1.setViewportView(Campo_informacion_adicional);
@@ -254,53 +234,71 @@ public class Detectar extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE));
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>                        
+    }
 
-    private void Modelos_ayudaMouseClicked(java.awt.event.MouseEvent evt) {                                           
-        new Informacion_de_un_modelo().setVisible(true);  // Crea instancia de la interfaz Informacion_de_un_modelo.java
-    }                                          
+    /*
+     * Lee los datos del modelo seleccionado y se pasan como parametros del constructor
+     * de la ventana Informacion_de_un_modelo
+     */
 
-    private void Campo_añoActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void Modelos_ayudaMouseClicked(java.awt.event.MouseEvent evt) {
+
+        List<String> datos = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader("Archivos\\Modelos\\" + this.Campo_modelo.getSelectedItem().toString().replace(" ", "_") + "\\datos.csv"))) {
+            String dato;
+            while ((dato = br.readLine()) != null) {
+                datos.add(dato);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Convertir ArrayList a String[]
+        String[] datosArray = datos.toArray(new String[0]);
+
+        new Informacion_de_un_modelo(datosArray).setVisible(true); // Crea instancia de la interfaz Informacion_de_un_modelo.java
+    }
+
+    private void Campo_añoActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                         
+    }
 
-    private void Campo_nombresActionPerformed(java.awt.event.ActionEvent evt) {                                              
+    private void Campo_nombresActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                             
+    }
 
-    private void Campo_telefonoActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    private void Campo_telefonoActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                              
+    }
 
-    private void Campo_diaActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void Campo_diaActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                         
+    }
 
-    private void Campo_mesActionPerformed(java.awt.event.ActionEvent evt) {                                          
+    private void Campo_mesActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                         
+    }
 
-    private void Campo_apellidosActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    private void Campo_apellidosActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                               
+    }
 
-    private void Boton_salirMouseClicked(java.awt.event.MouseEvent evt) {                                         
+    private void Boton_salirMouseClicked(java.awt.event.MouseEvent evt) {
         this.setVisible(false);
-    }                                        
+    }
 
-    private void Campo_sexo_biologicoActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+    private void Campo_sexo_biologicoActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                                    
+    }
+
     /**
      * Método que se ejecuta cuando se hace clic en el botón "proceder". Si
      * todos los campos son válidos, se abre un selector de archivos para
@@ -308,7 +306,7 @@ public class Detectar extends javax.swing.JFrame {
      *
      * @param evt Evento del ratón que desencadena este método.
      */
-    private void Boton_procederMouseClicked(java.awt.event.MouseEvent evt) {                                            
+    private void Boton_procederMouseClicked(java.awt.event.MouseEvent evt) {
         // Verificar si todos los campos son válidos.
         if (!this.validarCampos()) {
             new Alerta("Verifica que todos los campos esten bien").setVisible(true);
@@ -321,17 +319,18 @@ public class Detectar extends javax.swing.JFrame {
         fileChooser.setMultiSelectionEnabled(true);
         fileChooser.setFileFilter(new FileNameExtensionFilter("JPG & PNG Images", "jpg", "png"));
 
-        // Si el usuario aprobó la selección de archivos, añadir la ruta de cada archivo a la lista de rutas.
+        // Si el usuario aprobó la selección de archivos, añadir la ruta de cada archivo
+        // a la lista de rutas.
         if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             for (File file : fileChooser.getSelectedFiles()) {
                 rutas.add(file.getAbsolutePath());
             }
         }
-        
+
         this.limpiarCampos();
 
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("Archivos/rutas.txt"));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("Archivos\\Otros_recursos\\Rutas_imagenes_detectar.csv"));
             for (Object obj : rutas) {
                 if (obj instanceof String) {
                     writer.write((String) obj);
@@ -339,14 +338,97 @@ public class Detectar extends javax.swing.JFrame {
                 }
             }
             writer.close();
-        } catch (IOException e) {}
+        } catch (IOException e) {
+            e.printStackTrace(System.out);
+        }
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter("Archivos\\Otros_recursos\\Modelo_en_uso.csv"));
+            writer.write(this.Campo_modelo.getSelectedItem().toString());
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace(System.out);
+        }
 
-    }                                           
-    private void Boton_procederActionPerformed(java.awt.event.ActionEvent evt) {                                               
+    }
+
+    private void Boton_procederActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
-    }                                              
+    }
 
-    // Variables declaration - do not modify                     
+    /**
+     * Método para validar los campos de entrada.
+     *
+     * @return true si todos los campos son válidos, false en caso contrario.
+     */
+    private boolean validarCampos() {
+        // Verificar que los campos de texto no estén vacíos.
+        // Si alguno de los campos está vacío, se retorna false inmediatamente.
+        if (this.Campo_nombres.getText().toString().equals("")
+                || this.Campo_apellidos.getText().toString().equals("")
+                || this.Campo_dia.getText().toString().equals("")
+                || this.Campo_mes.getText().toString().equals("")
+                || this.Campo_año.getText().toString().equals("")
+                || this.Campo_telefono.getText().toString().equals("")) {
+            return false;
+        }
+
+        // Verificar que los campos numéricos tengan entradas numéricas.
+        // Se intenta convertir los campos numéricos a enteros.
+        // Si alguno de los campos no es un número válido o no cumple con las
+        // restricciones especificadas,
+        // se retorna false.
+        try {
+            int dia = Integer.parseInt(this.Campo_dia.getText().toString());
+            int mes = Integer.parseInt(this.Campo_mes.getText().toString());
+            int año = Integer.parseInt(this.Campo_año.getText().toString());
+
+            if (dia < 1 || dia > 31 || mes < 1 || mes > 12 || año < 2024) {
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            // Si se lanza una excepción NumberFormatException, significa que uno de los
+            // campos no es un número válido.
+            return false;
+        }
+
+        // Si todas las verificaciones pasan, se retorna true.
+        return true;
+    }
+
+    private void limpiarCampos() {
+        this.Campo_nombres.setText("");
+        this.Campo_apellidos.setText("");
+        this.Campo_dia.setText("");
+        this.Campo_mes.setText("");
+        this.Campo_año.setText("");
+        this.Campo_telefono.setText("");
+        this.Campo_informacion_adicional.setText("");
+    }
+
+
+    /*
+     *  Listar los modelos ya creados en el comboBox this.Campo_modelo
+     *  para que el usuario los escoga.
+    */
+    private void listarModelos() {
+        List<String> modelos = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader("Archivos\\Registros\\Modelos_registrados.csv"))) {
+            String modelo;
+            while ((modelo = br.readLine()) != null) {
+                modelos.add(modelo.replace("_", " "));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Convertir ArrayList a String[]
+        String[] modelosArray = modelos.toArray(new String[0]);
+
+        // Establecer el modelo para el JComboBox
+        Campo_modelo.setModel(new javax.swing.DefaultComboBoxModel<>(modelosArray));
+    }
+
+    // Variables declaration - do not modify
     private javax.swing.JButton Boton_proceder;
     private javax.swing.JLabel Boton_salir;
     private javax.swing.JTextField Campo_apellidos;
@@ -363,5 +445,5 @@ public class Detectar extends javax.swing.JFrame {
     private javax.swing.JPanel Fondo;
     private javax.swing.JLabel Modelos_ayuda;
     private javax.swing.JScrollPane jScrollPane1;
-    // End of variables declaration                   
+    // End of variables declaration
 }

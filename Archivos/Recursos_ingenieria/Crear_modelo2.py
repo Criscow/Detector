@@ -1,13 +1,15 @@
 import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from tensorflow import keras
+import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.callbacks import EarlyStopping
-import EfficientNet.effnetv2
 
-ruta_archivo = os.path.realpath(__file__).replace("\\Recursos_ingenieria\\Crear_modelo.py", "")
+# Assuming your EfficientNetV2 implementation is in effnetv2.py
+import EfficientNet.effnetv2 as EfficientNetV2
+
+ruta_archivo = os.path.realpath(__file__).replace("\\Recursos_ingenieria\\Crear_modelo2.py", "")
 ruta_ultimo_modelo = ruta_archivo + "\\Otros_recursos\\Ultimo_modelo.csv"
 
 # Leer el nombre del último modelo del archivo CSV
@@ -59,21 +61,26 @@ test_gen = test_datagen.flow_from_dataframe(test, x_col='filepaths', y_col='labe
 
 # Creación del modelo
 if tamaño == "Chico":
-    base_model = keras.applications.EfficientNetV2B0(weights=None, input_shape=(dimension_entrada, dimension_entrada, 3), include_top=False)
+    model_name = 'efficientnetv2-b0'
 elif tamaño == "Mediano":
-    base_model = keras.applications.EfficientNetV2B2(weights=None, input_shape=(dimension_entrada, dimension_entrada, 3), include_top=False)
+    model_name = 'efficientnetv2-b2'
 elif tamaño == "Grande":
-    base_model = keras.applications.EfficientNetV2B3(weights=None, input_shape=(dimension_entrada, dimension_entrada, 3), include_top=False)
+    model_name = 'efficientnetv2-b3'
 elif tamaño == "Muy grande":
-    base_model = keras.applications.EfficientNetV2S(weights=None, input_shape=(dimension_entrada, dimension_entrada, 3), include_top=False)
-base_model.trainable = True
+    model_name = 'efficientnetv2-s'
 
-inputs = keras.Input(shape=(dimension_entrada, dimension_entrada, 3))
-x = base_model(inputs, training=True)
-x = keras.layers.GlobalAveragePooling2D()(x)
-x = keras.layers.Dropout(0.2)(x)
-outputs = keras.layers.Dense(1, activation="sigmoid")(x)
-model = keras.Model(inputs, outputs)
+# Use your EffNetV2Model class
+model = EfficientNetV2.EffNetV2Model(model_name=model_name, include_top=False)
+
+# Add custom top layers
+inputs = tf.keras.Input(shape=(dimension_entrada, dimension_entrada, 3))
+x = model(inputs, training=True)
+x = tf.keras.layers.GlobalAveragePooling2D()(x)
+x = tf.keras.layers.Dropout(0.2)(x)
+outputs = tf.keras.layers.Dense(1, activation="sigmoid")(x)
+
+# Create the final model
+model = tf.keras.Model(inputs, outputs)
 
 # Callback de parada temprana
 early_stopping = EarlyStopping(monitor='val_loss', patience=10)
