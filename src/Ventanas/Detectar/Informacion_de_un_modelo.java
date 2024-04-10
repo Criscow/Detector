@@ -7,7 +7,7 @@ package Ventanas.Detectar;
 public class Informacion_de_un_modelo extends javax.swing.JFrame {
 
     public Informacion_de_un_modelo(String[] datos) {
-        iniciarComponentes();
+        this.iniciarComponentes();
         this.Titulo_Nombre_modelo.setText("Nombre del modelo: " + datos[0].replace("_", " "));
         this.Titulo_Nombre_autor.setText("Autor: " + datos[1]);
         this.Titulo_Fecha_creacion.setText("Fecha de creacion: " + datos[2] + "-" + datos[3] + "-" + datos[4]);
@@ -127,7 +127,7 @@ public class Informacion_de_un_modelo extends javax.swing.JFrame {
         this.setVisible(false); // Oculta la ventana como si se hubiese "Cerrado"
     }                                        
 
-    // Variables declaration - do not modify                     
+    // Declaracion de variables               
     private javax.swing.JLabel Boton_salir;
     private javax.swing.JPanel Fondo;
     private javax.swing.JTextArea Informacion;
@@ -138,5 +138,5 @@ public class Informacion_de_un_modelo extends javax.swing.JFrame {
     private javax.swing.JLabel Titulo_Resolucion;
     private javax.swing.JLabel Titulo_Tamaño;
     private javax.swing.JScrollPane jScrollPane1;
-    // End of variables declaration                   
+    // Final de la declaracion de variables             
 }

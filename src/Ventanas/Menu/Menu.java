@@ -9,12 +9,10 @@ import Ventanas.Otros.Interfaces_instancias;
 public class Menu extends javax.swing.JFrame {
 
     public Menu() {
-        initComponents();
+        this.iniciarComponentes();
     }
-
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
+                     
+    private void iniciarComponentes() {
 
         Fondo = new javax.swing.JPanel();
         Panel_imagen = new javax.swing.JPanel();
@@ -111,12 +109,6 @@ public class Menu extends javax.swing.JFrame {
                 Boton_registrosMouseClicked(evt);
             }
         });
-        Boton_registros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Boton_registrosActionPerformed(evt);
-            }
-        });
-
         Boton_detectar.setBackground(new java.awt.Color(104, 80, 146));
         Boton_detectar.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         Boton_detectar.setForeground(new java.awt.Color(255, 255, 255));
@@ -131,12 +123,6 @@ public class Menu extends javax.swing.JFrame {
                 Boton_detectarMouseClicked(evt);
             }
         });
-        Boton_detectar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Boton_detectarActionPerformed(evt);
-            }
-        });
-
         Boton_crear_modelo.setBackground(new java.awt.Color(104, 80, 146));
         Boton_crear_modelo.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         Boton_crear_modelo.setForeground(new java.awt.Color(255, 255, 255));
@@ -150,11 +136,6 @@ public class Menu extends javax.swing.JFrame {
         Boton_crear_modelo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 Boton_crear_modeloMouseClicked(evt);
-            }
-        });
-        Boton_crear_modelo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Boton_crear_modeloActionPerformed(evt);
             }
         });
 
@@ -233,7 +214,7 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>                        
+    }                     
 
     private void Boton_salir2MouseClicked(java.awt.event.MouseEvent evt) {                                          
         System.exit(0);
@@ -250,20 +231,12 @@ public class Menu extends javax.swing.JFrame {
 
     }                                            
 
-    private void Boton_registrosActionPerformed(java.awt.event.ActionEvent evt) {                                                
-        // TODO add your handling code here:
-    }                                               
-
     private void Boton_detectarMouseClicked(java.awt.event.MouseEvent evt) {                                            
         if (Interfaces_instancias.DETECTAR.isVisible()) {
             Interfaces_instancias.DETECTAR.setVisible(false);
         }
         Interfaces_instancias.DETECTAR.setVisible(true);
     }                                           
-
-    private void Boton_detectarActionPerformed(java.awt.event.ActionEvent evt) {                                               
-        // TODO add your handling code here:
-    }                                              
 
     private void Boton_crear_modeloMouseClicked(java.awt.event.MouseEvent evt) {                                                
         if (Interfaces_instancias.CREAR_MODELO.isVisible()) {
@@ -272,11 +245,7 @@ public class Menu extends javax.swing.JFrame {
         Interfaces_instancias.CREAR_MODELO.setVisible(true);
     }                                               
 
-    private void Boton_crear_modeloActionPerformed(java.awt.event.ActionEvent evt) {                                                   
-        // TODO add your handling code here:
-    }                                                  
-
-    // Variables declaration - do not modify                     
+    // Declaracion de variables                 
     private javax.swing.JButton Boton_ayudar;
     private javax.swing.JButton Boton_crear_modelo;
     private javax.swing.JButton Boton_detectar;
@@ -288,5 +257,5 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JPanel Panel_opciones;
     private javax.swing.JLabel Titulo;
     private javax.swing.JLabel jLabel1;
-    // End of variables declaration                   
+    // Final de declaracion de variables                
 }

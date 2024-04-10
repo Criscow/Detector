@@ -7,12 +7,10 @@ package Ventanas.Ayuda;
 public class Ayuda extends javax.swing.JFrame {
 
     public Ayuda() {
-        initComponents();
+        this.iniciarComponentes();
     }
-
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
+                    
+    private void iniciarComponentes() {
 
         Fondo = new javax.swing.JPanel();
         Boton_salir = new javax.swing.JLabel();
@@ -309,7 +307,7 @@ public class Ayuda extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>                        
+    }                  
 
     private void Boton_salirMouseClicked(java.awt.event.MouseEvent evt) {                                         
         this.setVisible(false); // Oculta la ventana como si se hubiera "Cerrado"

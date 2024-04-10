@@ -8,14 +8,12 @@ package Ventanas.Otros;
 public class Alerta extends javax.swing.JFrame {
 
     public Alerta(String alerta) {
-        initComponents();
+        this.iniciarComponentes();
         this.Texto.setText(alerta);
         
     }
-
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
+               
+    private void iniciarComponentes() {
 
         Fondo = new javax.swing.JPanel();
         Boton_salir = new javax.swing.JLabel();
@@ -58,15 +56,15 @@ public class Alerta extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>                        
+    }                  
 
     private void Boton_salirMouseClicked(java.awt.event.MouseEvent evt) {                                         
         this.setVisible(false);
     }                                        
 
-    // Variables declaration - do not modify                     
+    // Declaracion de variables                  
     private javax.swing.JLabel Boton_salir;
     private javax.swing.JPanel Fondo;
     private javax.swing.JLabel Texto;
-    // End of variables declaration                   
+    // Final de la declaracion de variables                
 }

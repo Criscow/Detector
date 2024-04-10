@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.io.File;
 import java.io.FileReader;
 import java.util.List;
+import java.util.Random;
+
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 import Ventanas.Otros.Alerta;
@@ -12,6 +14,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
@@ -21,8 +24,8 @@ import java.util.ArrayList;
 public class Detectar extends javax.swing.JFrame {
 
     public Detectar() {
-        iniciarComponentes();
-        listarModelos();
+        this.iniciarComponentes();
+        this.listarModelos();
     }
 
     private void iniciarComponentes() {
@@ -72,11 +75,6 @@ public class Detectar extends javax.swing.JFrame {
                 new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Año",
                 javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
                 new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
-        Campo_año.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Campo_añoActionPerformed(evt);
-            }
-        });
         Fondo.add(Campo_año, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 120, -1));
 
         Campo_nombres.setBackground(new java.awt.Color(255, 255, 255));
@@ -86,11 +84,6 @@ public class Detectar extends javax.swing.JFrame {
                 new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Nombre(s)",
                 javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
                 new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
-        Campo_nombres.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Campo_nombresActionPerformed(evt);
-            }
-        });
         Fondo.add(Campo_nombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 470, -1));
 
         Campo_telefono.setBackground(new java.awt.Color(255, 255, 255));
@@ -100,11 +93,6 @@ public class Detectar extends javax.swing.JFrame {
                 new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Numero de telefono",
                 javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
                 new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
-        Campo_telefono.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Campo_telefonoActionPerformed(evt);
-            }
-        });
         Fondo.add(Campo_telefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 470, 470, -1));
 
         Campo_dia.setBackground(new java.awt.Color(255, 255, 255));
@@ -114,11 +102,6 @@ public class Detectar extends javax.swing.JFrame {
                 new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Dia",
                 javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
                 new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
-        Campo_dia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Campo_diaActionPerformed(evt);
-            }
-        });
         Fondo.add(Campo_dia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 120, -1));
 
         Campo_mes.setBackground(new java.awt.Color(255, 255, 255));
@@ -128,11 +111,6 @@ public class Detectar extends javax.swing.JFrame {
                 new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Mes",
                 javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
                 new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
-        Campo_mes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Campo_mesActionPerformed(evt);
-            }
-        });
         Fondo.add(Campo_mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 120, -1));
 
         Campo_sexo_biologico.setBackground(new java.awt.Color(255, 255, 255));
@@ -140,11 +118,6 @@ public class Detectar extends javax.swing.JFrame {
         Campo_sexo_biologico.setForeground(new java.awt.Color(0, 0, 0));
         Campo_sexo_biologico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer" }));
         Campo_sexo_biologico.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        Campo_sexo_biologico.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Campo_sexo_biologicoActionPerformed(evt);
-            }
-        });
         Fondo.add(Campo_sexo_biologico, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, 240, 50));
 
         Campo_sexo_titulo.setBackground(new java.awt.Color(255, 255, 255));
@@ -160,11 +133,6 @@ public class Detectar extends javax.swing.JFrame {
                 new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Apellido(s)",
                 javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
                 new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
-        Campo_apellidos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Campo_apellidosActionPerformed(evt);
-            }
-        });
         Fondo.add(Campo_apellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 470, -1));
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
@@ -224,11 +192,6 @@ public class Detectar extends javax.swing.JFrame {
                 Boton_procederMouseClicked(evt);
             }
         });
-        Boton_proceder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Boton_procederActionPerformed(evt);
-            }
-        });
         Fondo.add(Boton_proceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 480, 440, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -249,8 +212,29 @@ public class Detectar extends javax.swing.JFrame {
      * de la ventana Informacion_de_un_modelo
      */
 
-    private void Modelos_ayudaMouseClicked(java.awt.event.MouseEvent evt) {
+         /*
+     *  Listar los modelos ya creados en el comboBox this.Campo_modelo
+     *  para que el usuario los escoga.
+    */
+    private void listarModelos() {
+        List<String> modelos = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader("Archivos\\Registros\\Modelos_registrados.csv"))) {
+            String modelo;
+            while ((modelo = br.readLine()) != null) {
+                modelos.add(modelo.replace("_", " "));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        // Convertir ArrayList a String[]
+        String[] modelosArray = modelos.toArray(new String[0]);
+
+        // Establecer el modelo para el JComboBox
+        Campo_modelo.setModel(new javax.swing.DefaultComboBoxModel<>(modelosArray));
+    }
+
+    private void Modelos_ayudaMouseClicked(java.awt.event.MouseEvent evt) {
         List<String> datos = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("Archivos\\Modelos\\" + this.Campo_modelo.getSelectedItem().toString().replace(" ", "_") + "\\datos.csv"))) {
             String dato;
@@ -267,36 +251,8 @@ public class Detectar extends javax.swing.JFrame {
         new Informacion_de_un_modelo(datosArray).setVisible(true); // Crea instancia de la interfaz Informacion_de_un_modelo.java
     }
 
-    private void Campo_añoActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void Campo_nombresActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void Campo_telefonoActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void Campo_diaActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void Campo_mesActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void Campo_apellidosActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
     private void Boton_salirMouseClicked(java.awt.event.MouseEvent evt) {
         this.setVisible(false);
-    }
-
-    private void Campo_sexo_biologicoActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
     }
 
     /**
@@ -309,7 +265,9 @@ public class Detectar extends javax.swing.JFrame {
     private void Boton_procederMouseClicked(java.awt.event.MouseEvent evt) {
         // Verificar si todos los campos son válidos.
         if (!this.validarCampos()) {
-            new Alerta("Verifica que todos los campos esten bien").setVisible(true);
+            new JOptionPane("Verifica que todos los campos esten bien",
+                JOptionPane.INFORMATION_MESSAGE)
+                .createDialog("Imagenes positivas").setVisible(true);
             return;
         }
 
@@ -325,6 +283,26 @@ public class Detectar extends javax.swing.JFrame {
             for (File file : fileChooser.getSelectedFiles()) {
                 rutas.add(file.getAbsolutePath());
             }
+        }
+
+        int indice = new Random().nextInt(1000000);
+        ArrayList<String> datos = new ArrayList<>();
+        datos.add(this.Campo_nombres.getText());
+        datos.add(this.Campo_apellidos.getText());
+        datos.add(this.Campo_dia.getText());
+        datos.add(this.Campo_mes.getText());
+        datos.add(this.Campo_año.getText());
+        datos.add(this.Campo_sexo_biologico.getSelectedItem().toString());
+        datos.add(this.Campo_telefono.getText());
+        datos.add(this.Campo_informacion_adicional.getText());
+
+        try (FileWriter writer = new FileWriter("Archivos\\Registros\\" + indice + "\\datos.csv")) {
+            for (String str : datos) {
+                writer.write(str);
+            }
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         this.limpiarCampos();
@@ -349,10 +327,32 @@ public class Detectar extends javax.swing.JFrame {
             e.printStackTrace(System.out);
         }
 
+        
+        // Si todo sale bien se ejecutara el proceso de detectar
+        ejecutarComandoDetectar();
+
     }
 
-    private void Boton_procederActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    /*
+     *  Ejecutar el archivo python Detectar.py para crear el registro de deteccion
+     */
+    private void ejecutarComandoDetectar() {
+        try {
+            // Creamos un ProcessBuilder para ejecutar el comando
+            ProcessBuilder pb = new ProcessBuilder("python", ".\\Archivos\\Recursos_ingenieria\\Detectar.py");
+            Process process = pb.start();
+
+            // Leemos la salida del comando
+            try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
+                String linea;
+                while ((linea = reader.readLine()) != null) {
+                    System.out.println(linea);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace(System.out);
+            new Alerta("Algo salio mal").setVisible(true);
+        }
     }
 
     /**
@@ -406,29 +406,7 @@ public class Detectar extends javax.swing.JFrame {
     }
 
 
-    /*
-     *  Listar los modelos ya creados en el comboBox this.Campo_modelo
-     *  para que el usuario los escoga.
-    */
-    private void listarModelos() {
-        List<String> modelos = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("Archivos\\Registros\\Modelos_registrados.csv"))) {
-            String modelo;
-            while ((modelo = br.readLine()) != null) {
-                modelos.add(modelo.replace("_", " "));
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Convertir ArrayList a String[]
-        String[] modelosArray = modelos.toArray(new String[0]);
-
-        // Establecer el modelo para el JComboBox
-        Campo_modelo.setModel(new javax.swing.DefaultComboBoxModel<>(modelosArray));
-    }
-
-    // Variables declaration - do not modify
+    // Declaracion de variables
     private javax.swing.JButton Boton_proceder;
     private javax.swing.JLabel Boton_salir;
     private javax.swing.JTextField Campo_apellidos;
@@ -445,5 +423,5 @@ public class Detectar extends javax.swing.JFrame {
     private javax.swing.JPanel Fondo;
     private javax.swing.JLabel Modelos_ayuda;
     private javax.swing.JScrollPane jScrollPane1;
-    // End of variables declaration
+    // Final de declaracion de variables
 }

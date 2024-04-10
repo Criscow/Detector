@@ -7,7 +7,7 @@ package Ventanas.Crear_modelo;
 public class Informacion_de_Tamaño extends javax.swing.JFrame {
 
     public Informacion_de_Tamaño(String tamaño) {
-    initComponents();
+    this.iniciarComponentes();
     
     
     /*
@@ -38,10 +38,8 @@ public class Informacion_de_Tamaño extends javax.swing.JFrame {
         this.Titulo_Parametros_no_entrenables.setText("Parametros no entrenables: 153,872");
     }
 }
-
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
-    private void initComponents() {
+                     
+    private void iniciarComponentes() {
 
         Fondo = new javax.swing.JPanel();
         Boton_salir = new javax.swing.JLabel();
@@ -103,17 +101,17 @@ public class Informacion_de_Tamaño extends javax.swing.JFrame {
 
         pack();
         setLocationRelativeTo(null);
-    }// </editor-fold>                        
+    }                   
 
     private void Boton_salirMouseClicked(java.awt.event.MouseEvent evt) {                                         
         this.setVisible(false); // Oculta la ventana como si se hubiese "Cerrado"
     }                                        
 
-    // Variables declaration - do not modify                     
+    // Declaracion de variables                 
     private javax.swing.JLabel Boton_salir;
     private javax.swing.JPanel Fondo;
     private javax.swing.JLabel Titulo_Parametros_entrenables;
     private javax.swing.JLabel Titulo_Parametros_no_entrenables;
     private javax.swing.JLabel Titulo_parametros_totales;
-    // End of variables declaration                   
+    // Final de la declaracion de variables                
 }

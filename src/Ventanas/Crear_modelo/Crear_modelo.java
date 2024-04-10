@@ -1,13 +1,11 @@
 package Ventanas.Crear_modelo;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.InetAddress;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -21,10 +19,10 @@ import Ventanas.Otros.Alerta;
 public class Crear_modelo extends javax.swing.JFrame {
 
     public Crear_modelo() {
-        initComponents();
+        this.iniciarComponentes();
     }
 
-    private void initComponents() {
+    private void iniciarComponentes() {
         Fondo = new javax.swing.JPanel();
         Boton_salir = new javax.swing.JLabel();
         Campo_dimensiones = new javax.swing.JTextField();
@@ -68,11 +66,6 @@ public class Crear_modelo extends javax.swing.JFrame {
                 new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true),
                 "Ancho y alto de las imagenes(Se redondeara a un multiplo de 8)", javax.swing.border.TitledBorder.LEFT,
                 javax.swing.border.TitledBorder.TOP, new java.awt.Font("Roboto", 1, 15), new java.awt.Color(0, 0, 0))); // NOI18N
-        Campo_dimensiones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Campo_dimensionesActionPerformed(evt);
-            }
-        });
         Fondo.add(Campo_dimensiones, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 470, -1));
 
         Campo_nombre_modelo.setBackground(new java.awt.Color(255, 255, 255));
@@ -82,11 +75,6 @@ public class Crear_modelo extends javax.swing.JFrame {
                 new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Nombre del modelo",
                 javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
                 new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
-        Campo_nombre_modelo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Campo_nombre_modeloActionPerformed(evt);
-            }
-        });
         Fondo.add(Campo_nombre_modelo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 470, -1));
 
         Campo_año.setBackground(new java.awt.Color(255, 255, 255));
@@ -96,11 +84,6 @@ public class Crear_modelo extends javax.swing.JFrame {
                 new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Año",
                 javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
                 new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
-        Campo_año.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Campo_añoActionPerformed(evt);
-            }
-        });
         Fondo.add(Campo_año, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, 120, -1));
 
         Campo_mes.setBackground(new java.awt.Color(255, 255, 255));
@@ -110,11 +93,6 @@ public class Crear_modelo extends javax.swing.JFrame {
                 new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Mes",
                 javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
                 new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
-        Campo_mes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Campo_mesActionPerformed(evt);
-            }
-        });
         Fondo.add(Campo_mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 120, -1));
 
         Campo_dia.setBackground(new java.awt.Color(255, 255, 255));
@@ -124,11 +102,6 @@ public class Crear_modelo extends javax.swing.JFrame {
                 new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Dia",
                 javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
                 new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
-        Campo_dia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Campo_diaActionPerformed(evt);
-            }
-        });
         Fondo.add(Campo_dia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 120, -1));
 
         Campo_autor.setBackground(new java.awt.Color(255, 255, 255));
@@ -138,11 +111,6 @@ public class Crear_modelo extends javax.swing.JFrame {
                 new javax.swing.border.LineBorder(new java.awt.Color(104, 80, 146), 4, true), "Autor",
                 javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP,
                 new java.awt.Font("Roboto", 1, 24), new java.awt.Color(0, 0, 0))); // NOI18N
-        Campo_autor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Campo_autorActionPerformed(evt);
-            }
-        });
         Fondo.add(Campo_autor, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 470, -1));
 
         Campo_modelo_titulo.setBackground(new java.awt.Color(255, 255, 255));
@@ -203,11 +171,6 @@ public class Crear_modelo extends javax.swing.JFrame {
                 Boton_procederMouseClicked(evt);
             }
         });
-        Boton_proceder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Boton_procederActionPerformed(evt);
-            }
-        });
         Fondo.add(Boton_proceder, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 500, 440, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,33 +190,122 @@ public class Crear_modelo extends javax.swing.JFrame {
         this.setVisible(false); // Oculta la ventana como si se hubiese "Cerrado"
     }
 
-    private void Campo_dimensionesActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void Campo_nombre_modeloActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void Campo_añoActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void Campo_mesActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void Campo_diaActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void Campo_autorActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
     private void Modelos_ayudaMouseClicked(java.awt.event.MouseEvent evt) {
-        String Tamaño = this.Campo_modelo.getSelectedItem().toString();
-        new Informacion_de_Tamaño(Tamaño).setVisible(true);
+        new Informacion_de_Tamaño(this.Campo_modelo.getSelectedItem().toString()).setVisible(true);
+    }
+
+    /**
+     * Método que se ejecuta cuando se hace clic en el botón "proceder". Si
+     * todos los campos son válidos, se abre un selector de archivos para
+     * seleccionar la carpeta de imagenes positivas y negativas . Si no, se
+     * muestra una alerta al usuario.
+     *
+     * @param evt Evento del ratón que desencadena este método.
+     */
+    private void Boton_procederMouseClicked(java.awt.event.MouseEvent evt) {
+        // Verificar si todos los campos son válidos.
+        if (!this.validarCampos()) {
+            new JOptionPane("Verifica que todos los campos esten bien",
+                JOptionPane.INFORMATION_MESSAGE)
+                .createDialog("Imagenes positivas").setVisible(true);
+            return;
+        }
+
+        // Seleccionar la carpeta de imágenes positivas.
+        new JOptionPane("Vas a seleccionar la carpeta de imagenes positivas(solo se tomara jpg y png)",
+                JOptionPane.INFORMATION_MESSAGE)
+                .createDialog("Imagenes positivas").setVisible(true);
+        String ruta_positiva = seleccionarCarpeta();
+
+        // Seleccionar la carpeta de imágenes negativas.
+        new JOptionPane("Vas a seleccionar la carpeta de imagenes negativas(solo se tomara jpg y png)",
+                JOptionPane.INFORMATION_MESSAGE)
+                .createDialog("Imagenes negativas").setVisible(true);
+        String ruta_negativa = seleccionarCarpeta();
+
+        ArrayList<String> datos = new ArrayList<String>();
+        datos.add(Campo_nombre_modelo.getText().toString().replace(" ", "_"));
+        datos.add(Campo_autor.getText().toString());
+        datos.add(Campo_dia.getText().toString());
+        datos.add(Campo_mes.getText().toString());
+        datos.add(Campo_año.getText().toString());
+        datos.add(String.valueOf(retornarMultiplo8(Integer.parseInt(Campo_dimensiones.getText().toString()))));
+        datos.add(Campo_modelo.getSelectedItem().toString());
+        datos.add(ruta_positiva);
+        datos.add(ruta_negativa);
+        datos.add(Campo_informacion_adicional.getText().toString().equals("") ? "Sin formacion adicional"
+                : Campo_informacion_adicional.getText().toString());
+
+        // Verificar que no exista otro modelo con el mismo nombre
+        String ultimosModelos = "Archivos\\Registros\\Modelos_registrados.csv"; // Ruta del archivo CSV
+        boolean modeloDuplicado = false;
+        try (BufferedReader br = new BufferedReader(new FileReader(ultimosModelos))) {
+            String linea;
+            while ((linea = br.readLine()) != null) {
+                if (linea.trim().equals(Campo_nombre_modelo.getText().toString().replace(" ", "_"))) {
+                    modeloDuplicado = true;
+                    break;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (modeloDuplicado) {
+            new JOptionPane("Ya existe un modelo llamado " + Campo_nombre_modelo.getText().toString(),
+                    JOptionPane.INFORMATION_MESSAGE)
+                    .createDialog("Alerta").setVisible(true);
+            return;
+        }
+
+        final String MODELO_DIR = "Archivos\\Modelos\\";
+        final String REGISTROS_DIR = "Archivos\\Registros\\";
+        final String ULTIMO_MODELO_DIR = "Archivos\\Otros_recursos\\Ultimo_modelo.csv";
+
+        // Ruta completa del archivo CSV
+        String nombreModelo = Campo_nombre_modelo.getText().toString().replace(" ", "_");
+        String nombre = MODELO_DIR + nombreModelo + "\\datos.csv";
+
+        // Crear los directorios necesarios
+        File file = new File(nombre);
+        file.getParentFile().mkdirs();
+
+        // Llamar al método escribirCsv
+        escribirCsv(datos, nombre);
+
+        String myFileName = REGISTROS_DIR + "Modelos_registrados.csv";
+
+        try {
+            // Abre el archivo en modo de apendizaje (sin sobrescribir)
+            try (FileWriter output = new FileWriter(myFileName, true)) {
+                // Agrega el nuevo nombre al archivo
+                output.write(nombreModelo);
+                output.write(System.lineSeparator());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<String> ultimo_nombre = new ArrayList<String>();
+        ultimo_nombre.add(nombreModelo);
+        escribirCsv(ultimo_nombre, ULTIMO_MODELO_DIR);
+
+        this.limpiarCampos(); // Se limpia todos los campos
+
+        // Verificamos la aceleración por GPU
+        boolean aceleracion = verificarAceleracionGPU();
+
+        if (!aceleracion) {
+            // Si no hay aceleración por GPU, mostramos un mensaje al usuario
+            new JOptionPane(
+                    "No se detecto aceleracion por GPU la cual es necesario \n vaya a la seccion de Ayuda > Aceleracion por GPU.",
+                    JOptionPane.INFORMATION_MESSAGE)
+                    .createDialog("Aceleracion por GPU").setVisible(true);
+            return;
+        }
+
+        // Si hay aceleración por GPU, ejecuta el comando
+        ejecutarComandoCrearModelo();
     }
 
     /**
@@ -313,134 +365,10 @@ public class Crear_modelo extends javax.swing.JFrame {
     }
 
     /**
-     * Método que se ejecuta cuando se hace clic en el botón "proceder". Si
-     * todos los campos son válidos, se abre un selector de archivos para
-     * seleccionar la carpeta de imagenes positivas y negativas . Si no, se
-     * muestra una alerta al usuario.
+     * Metodo para retornar un multiplo de 8 dado un numero anterior
      *
-     * @param evt Evento del ratón que desencadena este método.
+     * @return el multiplo de 8 mas cercano al numero recibido
      */
-    private void Boton_procederMouseClicked(java.awt.event.MouseEvent evt) {
-        // Verificar si todos los campos son válidos.
-        if (!this.validarCampos()) {
-            new Alerta("Verifica que todos los campos esten bien").setVisible(true);
-            return;
-        }
-
-        // Seleccionar la carpeta de imágenes positivas.
-        new JOptionPane("Vas a seleccionar la carpeta de imagenes positivas(solo se tomara jpg y png)",
-                JOptionPane.INFORMATION_MESSAGE)
-                .createDialog("Imagenes positivas").setVisible(true);
-        String ruta_positiva = seleccionarCarpeta();
-
-        // Seleccionar la carpeta de imágenes negativas.
-        new JOptionPane("Vas a seleccionar la carpeta de imagenes negativas(solo se tomara jpg y png)",
-                JOptionPane.INFORMATION_MESSAGE)
-                .createDialog("Imagenes negativas").setVisible(true);
-        String ruta_negativa = seleccionarCarpeta();
-
-        ArrayList<String> datos = new ArrayList<String>();
-        datos.add(Campo_nombre_modelo.getText().toString().replace(" ", "_"));
-        datos.add(Campo_autor.getText().toString());
-        datos.add(Campo_dia.getText().toString());
-        datos.add(Campo_mes.getText().toString());
-        datos.add(Campo_año.getText().toString());
-        datos.add(String.valueOf(retornarMultiplo8(Integer.parseInt(Campo_dimensiones.getText().toString()))));
-        datos.add(Campo_modelo.getSelectedItem().toString());
-        datos.add(ruta_positiva);
-        datos.add(ruta_negativa);
-        datos.add(Campo_informacion_adicional.getText().toString().equals("") ? "Sin formacion adicional"
-                : Campo_informacion_adicional.getText().toString());
-
-        // Verificar que no exista otro modelo con el mismo nombre
-
-        String ultimosModelos = "Archivos\\Registros\\Modelos_registrados.csv"; // Ruta del archivo CSV
-        boolean modeloDuplicado = false;
-        try (BufferedReader br = new BufferedReader(new FileReader(ultimosModelos))) {
-            String linea;
-            while ((linea = br.readLine()) != null) {
-                if (linea.trim().equals(Campo_nombre_modelo.getText().toString().replace(" ", "_"))) {
-                    modeloDuplicado = true;
-                    break;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        if (modeloDuplicado) {
-            new JOptionPane("Ya existe un modelo llamado " + Campo_nombre_modelo.getText().toString(),
-                    JOptionPane.INFORMATION_MESSAGE)
-                    .createDialog("Alerta").setVisible(true);
-        } else {
-            final String MODELO_DIR = "Archivos\\Modelos\\";
-            final String REGISTROS_DIR = "Archivos\\Registros\\";
-            final String ULTIMO_MODELO_DIR = "Archivos\\Otros_recursos\\Ultimo_modelo.csv";
-
-            // Ruta completa del archivo CSV
-            String nombreModelo = Campo_nombre_modelo.getText().toString().replace(" ", "_");
-            String nombre = MODELO_DIR + nombreModelo + "\\datos.csv";
-
-            // Crear los directorios necesarios
-            File file = new File(nombre);
-            file.getParentFile().mkdirs();
-
-            // Llamar al método escribirCsv
-            escribirCsv(datos, nombre);
-
-            String myFileName = REGISTROS_DIR + "Modelos_registrados.csv";
-
-            try {
-                // Abre el archivo en modo de apendizaje (sin sobrescribir)
-                try (BufferedWriter output = new BufferedWriter(new FileWriter(myFileName, true))) {
-                    // Agrega el nuevo nombre al archivo
-                    output.append(nombreModelo);
-                    output.newLine(); // Agrega un salto de línea al final
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                // Considera un manejo de errores más robusto aquí
-            }
-
-            ArrayList<String> ultimo_nombre = new ArrayList<String>();
-            ultimo_nombre.add(nombreModelo);
-            escribirCsv(ultimo_nombre, ULTIMO_MODELO_DIR);
-
-            this.limpiarCampos(); // Se limpia todos los campos
-
-            // Verificamos la aceleración por GPU
-            boolean aceleracion = verificarAceleracionGPU();
-
-            if (!aceleracion) { 
-                // Si no hay aceleración por GPU, mostramos un mensaje al usuario
-                new JOptionPane(
-                        "No se detecto aceleracion por GPU la cual es necesario \n vaya a la seccion de Ayuda > Aceleracion por GPU.",
-                        JOptionPane.INFORMATION_MESSAGE)
-                        .createDialog("Aceleracion por GPU").setVisible(true);
-            } else {
-                // Si hay aceleración por GPU y conexion a internet, ejecutamos el comando para crear el modelo
-                if(verificarConexion()){ // Verifica si hay conexion a internet
-                    ejecutarComandoCrearModelo();
-                } else {
-                    new JOptionPane("Verifica que haya conexion a internet",
-                    JOptionPane.INFORMATION_MESSAGE)
-                    .createDialog("Alerta").setVisible(true);
-                }
-            }
-        }
-
-    }
-
-    public boolean verificarConexion() {
-        try {
-            InetAddress googleAddress = InetAddress.getByName("www.google.com");
-            boolean conexion = googleAddress.isReachable(5000); // Espera 5 segundos para la respuesta
-
-            return conexion;
-        } catch (IOException e) {
-            return false;
-        }
-    }
 
     public int retornarMultiplo8(int num) {
         if (num % 8 == 0) {
@@ -451,6 +379,10 @@ public class Crear_modelo extends javax.swing.JFrame {
             return (num - bajo < alto - num) ? bajo : alto;
         }
     }
+
+    /*
+     * Metodo que ejecuta el comando para crear un modelo de inteligencia artificial
+     */
 
     private void ejecutarComandoCrearModelo() {
         try {
@@ -466,12 +398,16 @@ public class Crear_modelo extends javax.swing.JFrame {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace(System.out);
-            new Alerta("Algo salio mal").setVisible(true);
+            new Alerta(e.getMessage()).setVisible(true);
         }
     }
 
-    // Método para ejecutar un comando y verificar si la GPU está disponible
+    /**
+     * Metodo para verificar si hay aceleracion por GPU para el algoritmo de
+     * inteligencia artificial
+     *
+     * @return true si hay, si no false
+     */
     private boolean verificarAceleracionGPU() {
         boolean aceleracion = false;
         try {
@@ -494,6 +430,10 @@ public class Crear_modelo extends javax.swing.JFrame {
         }
         return aceleracion;
     }
+
+    /*
+     * Metodo que escribe datos de un ArrayList<String> en un archivo csv
+     */
 
     public void escribirCsv(ArrayList<String> datos, String nombre) {
         FileWriter csvWriter = null;
@@ -524,11 +464,7 @@ public class Crear_modelo extends javax.swing.JFrame {
         }
     }
 
-    private void Boton_procederActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    // Variables declaration - do not modify
+    // Declaracion de variables
     private javax.swing.JButton Boton_proceder;
     private javax.swing.JLabel Boton_salir;
     private javax.swing.JTextField Campo_autor;
@@ -543,5 +479,5 @@ public class Crear_modelo extends javax.swing.JFrame {
     private javax.swing.JPanel Fondo;
     private javax.swing.JLabel Modelos_ayuda;
     private javax.swing.JScrollPane jScrollPane1;
-    // End of variables declaration
+    // Final de la declaracion
 }
