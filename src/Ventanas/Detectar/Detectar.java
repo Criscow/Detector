@@ -208,14 +208,15 @@ public class Detectar extends javax.swing.JFrame {
     }
 
     /*
-     * Lee los datos del modelo seleccionado y se pasan como parametros del constructor
+     * Lee los datos del modelo seleccionado y se pasan como parametros del
+     * constructor
      * de la ventana Informacion_de_un_modelo
      */
 
-         /*
-     *  Listar los modelos ya creados en el comboBox this.Campo_modelo
-     *  para que el usuario los escoga.
-    */
+    /*
+     * Listar los modelos ya creados en el comboBox this.Campo_modelo
+     * para que el usuario los escoga.
+     */
     private void listarModelos() {
         List<String> modelos = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("Archivos\\Registros\\Modelos_registrados.csv"))) {
@@ -236,7 +237,8 @@ public class Detectar extends javax.swing.JFrame {
 
     private void Modelos_ayudaMouseClicked(java.awt.event.MouseEvent evt) {
         List<String> datos = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("Archivos\\Modelos\\" + this.Campo_modelo.getSelectedItem().toString().replace(" ", "_") + "\\datos.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("Archivos\\Modelos\\"
+                + this.Campo_modelo.getSelectedItem().toString().replace(" ", "_") + "\\datos.csv"))) {
             String dato;
             while ((dato = br.readLine()) != null) {
                 datos.add(dato);
@@ -248,7 +250,8 @@ public class Detectar extends javax.swing.JFrame {
         // Convertir ArrayList a String[]
         String[] datosArray = datos.toArray(new String[0]);
 
-        new Informacion_de_un_modelo(datosArray).setVisible(true); // Crea instancia de la interfaz Informacion_de_un_modelo.java
+        new Informacion_de_un_modelo(datosArray).setVisible(true); // Crea instancia de la interfaz
+                                                                   // Informacion_de_un_modelo.java
     }
 
     private void Boton_salirMouseClicked(java.awt.event.MouseEvent evt) {
@@ -266,10 +269,12 @@ public class Detectar extends javax.swing.JFrame {
         // Verificar si todos los campos son válidos.
         if (!this.validarCampos()) {
             new JOptionPane("Verifica que todos los campos esten bien",
-                JOptionPane.INFORMATION_MESSAGE)
-                .createDialog("Imagenes positivas").setVisible(true);
+                    JOptionPane.INFORMATION_MESSAGE)
+                    .createDialog("Imagenes positivas").setVisible(true);
             return;
         }
+
+        // Comienza a tomar las rutas y guardarlas
 
         List<String> rutas = new ArrayList<>();
 
@@ -285,30 +290,9 @@ public class Detectar extends javax.swing.JFrame {
             }
         }
 
-        int indice = new Random().nextInt(1000000);
-        ArrayList<String> datos = new ArrayList<>();
-        datos.add(this.Campo_nombres.getText());
-        datos.add(this.Campo_apellidos.getText());
-        datos.add(this.Campo_dia.getText());
-        datos.add(this.Campo_mes.getText());
-        datos.add(this.Campo_año.getText());
-        datos.add(this.Campo_sexo_biologico.getSelectedItem().toString());
-        datos.add(this.Campo_telefono.getText());
-        datos.add(this.Campo_informacion_adicional.getText());
-
-        try (FileWriter writer = new FileWriter("Archivos\\Registros\\" + indice + "\\datos.csv")) {
-            for (String str : datos) {
-                writer.write(str);
-            }
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        this.limpiarCampos();
-
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("Archivos\\Otros_recursos\\Rutas_imagenes_detectar.csv"));
+            BufferedWriter writer = new BufferedWriter(
+                    new FileWriter("Archivos\\Otros_recursos\\Rutas_imagenes_detectar.csv"));
             for (Object obj : rutas) {
                 if (obj instanceof String) {
                     writer.write((String) obj);
@@ -319,6 +303,8 @@ public class Detectar extends javax.swing.JFrame {
         } catch (IOException e) {
             e.printStackTrace(System.out);
         }
+
+        // Guardar el nombre del modelo que se va a usar
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter("Archivos\\Otros_recursos\\Modelo_en_uso.csv"));
             writer.write(this.Campo_modelo.getSelectedItem().toString());
@@ -327,31 +313,77 @@ public class Detectar extends javax.swing.JFrame {
             e.printStackTrace(System.out);
         }
 
-        
+        int indice = new Random().nextInt(100000000);
+        ArrayList<String> datos = new ArrayList<>();
+        datos.add(this.Campo_nombres.getText()); // 0
+        datos.add(this.Campo_apellidos.getText()); // 1
+        datos.add(this.Campo_dia.getText()); // 2
+        datos.add(this.Campo_mes.getText()); // 3
+        datos.add(this.Campo_año.getText()); // 4
+        datos.add(this.Campo_sexo_biologico.getSelectedItem().toString()); // 5
+        datos.add(this.Campo_telefono.getText()); // 6
+        datos.add(this.Campo_informacion_adicional.getText()); // 7
+
+        File archivo = new File("Archivos\\Registros\\" + String.valueOf(indice) + "\\datos.csv");
+        archivo.getParentFile().mkdirs(); // Creará la ruta si no existe
+
+        try (FileWriter writer = new FileWriter(archivo)) {
+            for (String row : datos) {
+                writer.append(row);
+                writer.append("\n");
+            }
+            writer.flush();
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Escribir le indice de paciente en uso para ayudar el detector.py
+        try {
+            FileWriter writer = new FileWriter("Archivos\\Otros_recursos\\Indice_en_uso.csv");
+            writer.write(indice + "");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace(System.out);
+        }
+
+        this.limpiarCampos();
+
         // Si todo sale bien se ejecutara el proceso de detectar
-        ejecutarComandoDetectar();
+        this.ejecutarComandoDetectar();
 
     }
 
     /*
-     *  Ejecutar el archivo python Detectar.py para crear el registro de deteccion
+     * Ejecutar el archivo python Detectar.py para crear el registro de deteccion
      */
     private void ejecutarComandoDetectar() {
+
         try {
-            // Creamos un ProcessBuilder para ejecutar el comando
+            // Crear ProcessBuilder
             ProcessBuilder pb = new ProcessBuilder("python", ".\\Archivos\\Recursos_ingenieria\\Detectar.py");
+
+            // Redirigir errores estándar a la salida estándar
+            pb.redirectErrorStream(true);
+
+            // Iniciar el proceso
             Process process = pb.start();
 
-            // Leemos la salida del comando
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
-                String linea;
-                while ((linea = reader.readLine()) != null) {
-                    System.out.println(linea);
-                }
+            // Leer la salida del script
+            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String ret;
+            while ((ret = in.readLine()) != null) {
+                System.out.println(ret);
             }
+
+            // Esperar a que el proceso termine
+            process.waitFor();
+
+            System.out.println("El script Python ha terminado de ejecutarse.");
         } catch (IOException e) {
             e.printStackTrace(System.out);
-            new Alerta("Algo salio mal").setVisible(true);
+        } catch (InterruptedException e2) {
+            e2.printStackTrace(System.out);
         }
     }
 
@@ -404,7 +436,6 @@ public class Detectar extends javax.swing.JFrame {
         this.Campo_telefono.setText("");
         this.Campo_informacion_adicional.setText("");
     }
-
 
     // Declaracion de variables
     private javax.swing.JButton Boton_proceder;

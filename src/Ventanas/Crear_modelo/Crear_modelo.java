@@ -258,13 +258,9 @@ public class Crear_modelo extends javax.swing.JFrame {
             return;
         }
 
-        final String MODELO_DIR = "Archivos\\Modelos\\";
-        final String REGISTROS_DIR = "Archivos\\Registros\\";
-        final String ULTIMO_MODELO_DIR = "Archivos\\Otros_recursos\\Ultimo_modelo.csv";
-
         // Ruta completa del archivo CSV
         String nombreModelo = Campo_nombre_modelo.getText().toString().replace(" ", "_");
-        String nombre = MODELO_DIR + nombreModelo + "\\datos.csv";
+        String nombre = "Archivos\\Modelos\\" + nombreModelo + "\\datos.csv";
 
         // Crear los directorios necesarios
         File file = new File(nombre);
@@ -273,7 +269,7 @@ public class Crear_modelo extends javax.swing.JFrame {
         // Llamar al método escribirCsv
         escribirCsv(datos, nombre);
 
-        String myFileName = REGISTROS_DIR + "Modelos_registrados.csv";
+        String myFileName = "Archivos\\Registros\\Modelos_registrados.csv";
 
         try {
             // Abre el archivo en modo de apendizaje (sin sobrescribir)
@@ -288,7 +284,7 @@ public class Crear_modelo extends javax.swing.JFrame {
 
         ArrayList<String> ultimo_nombre = new ArrayList<String>();
         ultimo_nombre.add(nombreModelo);
-        escribirCsv(ultimo_nombre, ULTIMO_MODELO_DIR);
+        escribirCsv(ultimo_nombre, "Archivos\\Otros_recursos\\Ultimo_modelo.csv");
 
         this.limpiarCampos(); // Se limpia todos los campos
 
