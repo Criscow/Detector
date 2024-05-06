@@ -77,7 +77,7 @@ public class Menu extends javax.swing.JFrame {
         Titulo.setFont(new java.awt.Font("Roboto", 1, 55)); // NOI18N
         Titulo.setForeground(new java.awt.Color(104, 80, 146));
         Titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Titulo.setText("Detector de cancer");
+        Titulo.setText("BreastNet");
 
         Boton_ayudar.setBackground(new java.awt.Color(104, 80, 146));
         Boton_ayudar.setFont(new java.awt.Font("Roboto", 1, 36)); // NOI18N
@@ -142,7 +142,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Roboto", 0, 10)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("©2024 Cristopher Yahir Baca Martinez");
+        jLabel1.setText("");
 
         javax.swing.GroupLayout Panel_opcionesLayout = new javax.swing.GroupLayout(Panel_opciones);
         Panel_opciones.setLayout(Panel_opcionesLayout);

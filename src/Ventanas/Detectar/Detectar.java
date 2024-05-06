@@ -8,8 +8,6 @@ import java.util.Random;
 
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import Ventanas.Otros.Alerta;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;

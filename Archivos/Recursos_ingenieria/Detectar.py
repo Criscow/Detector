@@ -32,6 +32,9 @@ for ruta in rutas:
     input_data = np.expand_dims(np.array(resize_image), axis=0) / 255.
     pred = modeloCargado.predict(input_data)
     resultados.append(pred)
+    
+
+print(resultados)
 
 with open(ruta_archivos + "\\Otros_recursos\\Indice_en_uso.csv", 'r') as archivo:
         lector_csv = csv.reader(archivo)
@@ -40,6 +43,4 @@ with open(ruta_archivos + "\\Otros_recursos\\Indice_en_uso.csv", 'r') as archivo
 with open(ruta_archivos + "\\Registros\\" + indice + "\\resultados.csv", 'w', newline='', encoding='utf-8') as archivo:
     escritor = csv.writer(archivo)
     for resultado in resultados:
-        print("guardando resultados")
-        print(resultado[0])
         escritor.writerow(resultado[0])
